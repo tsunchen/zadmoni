@@ -1,5 +1,5 @@
 generic.py
--------
+-------07,08:51
 class DefaultService:
     name = 'DefalutService'
     interval = 300
