@@ -1,0 +1,60 @@
+#_*_coding:utf-8_*_
+
+import redishelper
+
+import json
+
+import time
+
+import threading
+
+from conf import setting
+
+
+class MoniClient(object):
+    def __init__(self):
+       #pass
+       # connect to redis
+       self.r = redishelper.RedisHelper()
+       self.r.set("zadmoni", 'tsunc20170826-')
+       print self.r.get("zadmoni")
+       self.ip = setting.BindHost
+       self.host_config = self.get_config_from_redis()
+       
+
+
+    def start(self):
+       self.clihandler()
+       #pass
+       # 
+
+    def get_config_from_redis(self):
+       config_key = "HostConfig::%s" % self.ip
+       config = self.r.get(config_key)
+       if config:
+           config = json.loads(config)
+       return config
+
+    def clihandler(self):
+        if self.host_config:
+            while True:
+                for service, val in self.host_config.items():
+                    #print service, val
+                    if len(val) <3: # do all plugin at first runtime
+                        self.host_config[service].append(0) # last_runtime = 0
+                    
+                    plugin_name, interval, last_runtime = val
+                    if time.time() - last_runtime < interval: # no reached the next run yet
+                        next_runtime = interval - (time.time() - last_runtime)
+                        print "Service [%s] next run time is in [%s] secs" % (service, next_runtime)
+                        #pass
+                    else:
+                        print "--to run the [%s] again..." % service
+                        #last_runtime = time.time()
+                        self.host_config[service][2] = time.time()
+                time.sleep(1)
+        else:
+            print "\033[31;1m Disable to get config of host\033[0m"
+            
+    
+
