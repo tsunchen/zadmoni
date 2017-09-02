@@ -1,0 +1,10 @@
+import sys
+
+#Client IPaDDRESS
+BindHost = "172.93.35.2"
+
+
+RedisServer = '172.93.35.245'
+RedisPort  = 6379
+RedisPubChannel = 'fm090.9'
+RedisSubChannel = 'fm160.6'
