@@ -2,34 +2,59 @@ zadmoni设计架构：
 (各文件相见 github)
 zadmoni
 |-- config
-    |-- client
-    `-- service
-        |-- conf
-        |   |-- __init__.py
-        |   |-- host.py
-        |   |-- host.txt
-        |   |-- service
-        |   |   |-- __init__.py
-        |   |   |-- __init__.pyc
-        |   |   |-- generic.py
-        |   |   |-- generic.pyc
-        |   |   |-- generic.txt
-        |   |   |-- linux.py
-        |   |   |-- linux.pyc
-        |   |   `-- linux.txt
-        |   |-- setting.py
-        |   |-- setting.pyc
-        |   |-- template.py
-        |   |-- template.pyc
-        |   `-- template.txt
-        `-- core
-            |-- RedisHelper.txt
-            |-- __init__.py
-            |-- __init__.pyc
-            |-- main.py
-            |-- main.pyc
-            |-- main.txt
-            |-- redishelper.py
-            |-- redishelper.pyc
-            |-- settings.py
-            |-- settings.pyc
+|   |-- client
+|   |   |-- MoniClient.py
+|   |   |-- __init__.py
+|   |   |-- conf
+|   |   |   |-- __init__.py
+|   |   |   |-- __init__.pyc
+|   |   |   |-- setting.py
+|   |   |   `-- setting.pyc
+|   |   |-- core
+|   |   |   |-- __init__.py
+|   |   |   |-- __init__.pyc
+|   |   |   |-- main.py
+|   |   |   |-- main.pyc
+|   |   |   |-- redishelper.py
+|   |   |   `-- redishelper.pyc
+|   |   `-- plugin
+|   `-- service
+|       |-- MoniServer.py
+|       |-- __init__.py
+|       |-- __init__.pyc
+|       |-- conf
+|       |   |-- __init__.py
+|       |   |-- __init__.pyc
+|       |   |-- host.py
+|       |   |-- host.pyc
+|       |   |-- host.txt
+|       |   |-- service
+|       |   |   |-- __init__.py
+|       |   |   |-- __init__.pyc
+|       |   |   |-- generic.py
+|       |   |   |-- generic.pyc
+|       |   |   |-- generic.txt
+|       |   |   |-- linux.py
+|       |   |   |-- linux.pyc
+|       |   |   `-- linux.txt
+|       |   |-- setting.py
+|       |   |-- setting.pyc
+|       |   |-- template.py
+|       |   |-- template.pyc
+|       |   `-- template.txt
+|       |-- core
+|       |   |-- RedisHelper.txt
+|       |   |-- __init__.py
+|       |   |-- __init__.pyc
+|       |   |-- main.py
+|       |   |-- main.pyc
+|       |   |-- main.txt
+|       |   |-- redishelper.py
+|       |   |-- redishelper.pyc
+|       |   |-- serialize.py
+|       |   |-- serialize.pyc
+|       |   |-- serialize.txt
+|       |   |-- settings.py
+|       |   |-- settings.pyc
+|       |   `-- \320\302\275\250\316\304\261\276\316\304\265\265.txt
+|       `-- \320\302\275\250\316\304\261\276\316\304\265\265.txt
