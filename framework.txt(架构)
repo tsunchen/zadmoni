@@ -1,3 +1,5 @@
+[root@tsunc pub]# tar -cvf zadmoni-20170910.tar zadmoni
+
 zadmoni设计架构：
 (各文件相见 github)
 zadmoni
