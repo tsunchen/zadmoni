@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import commands,time,sys
+
+def monitor(first_invoke=1):
+    shell_command = 'sar 1 3| grep "^Average:"'
+    status, result = commands.getstatusoutput(shell_command)
+    if status != 0:
+        value_dic = {'status': status}
+    else:
+        value_dic = {}
+        user,nice,system,iowait,steal,idle = result.split()[2:]
+        value_dic = {
+            'user': user,
+            'nice': nice,
+            'system': system,
+            'iowait': iowait,
+            'steal': steal,
+            'idle':  idle,
+            'status': status
+        }
+    return value_dic
+
+if __name__ == '__main__':
+    #print monitor()
+    result = monitor()
+    print result['idle']
+
+    #shell_command2 = 'rrdtool update zadmoni_cpu_idle.rrd N:idle_val'
+    #while True:
+    #    result = monitor()
+    #    idle_val = result['idle']
+    #    print '[%s]' % idle_val
+    #    time.sleep(2)
+    #    status, resultcmd = commands.getstatusoutput(shell_command2)
+    #    if status!= 0:
+    #       print  resultcmd
+    #       print 'No data updated - [%s]' % result['idle']
+    #time.sleep(5)
+    print 'bash run start...'
+    shell_command3 = 'bash -x setinterv.sh '
+    status, resultcmd3 = commands.getstatusoutput(shell_command3)
+    if status != 0:
+        value_dic = {'status': status}
+    else:
+        print resultcmd3
