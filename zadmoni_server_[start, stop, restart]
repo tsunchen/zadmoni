@@ -1,0 +1,23 @@
+[root@tsunz service]# cat zadmoni_server_start.sh
+#!/bin/bash
+cd  ~/zadmonid/zadmoni/config/service
+python  MoniServer.py   >  zadmonid_moniserver.log 2>&1 &
+echo "Zadmoni MoniServer started."
+
+
+[root@tsunz service]# cat zadmoni_server_stop.sh
+echo "Stopping Zadmoni MoniServer..."
+PID=`ps -ef | grep  MoniServer | grep -v grep | awk '{print $2}'`
+if [[ "" !=  "$PID" ]]; then
+  echo "killing $PID"
+  kill -9 $PID
+fi
+echo "Zadmoni MoniServer stopped."
+
+
+[root@tsunz service]# vi zadmoni_server_restart.sh
+#!/bin/bash
+cd  ~/zadmonid/zadmoni/config/service
+sh zadmoni_server_stop.sh
+echo "Restarting Zadmoni MoniServer..."
+sh zadmoni_server_start.sh
