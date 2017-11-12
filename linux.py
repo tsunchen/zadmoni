@@ -110,7 +110,7 @@ class ifport(BaseService):
 
 class ifports(BaseService):
     def __init__(self):
-        super(ifport, self).__init__()
+        super(ifports, self).__init__()
         self.interval = 47
         self.name = 'linux_ifportpeek'
         self.plugin_name = 'get_ifports_info'
