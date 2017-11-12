@@ -1,3 +1,4 @@
+
 from generic import BaseService
 
 class cpu(BaseService):
@@ -113,10 +114,10 @@ class ifports(BaseService):
         super(ifports, self).__init__()
         self.interval = 47
         self.name = 'linux_ifportpeek'
-        self.plugin_name = 'get_ifports_info'
+        self.plugin_name = 'get_ifport_s_info'
         self.triggers = {
 
-           'ifIn15': {
+           'ifIn::FastEthernet0_14': {
               'func': 'avg',
               'last': 5*60,
               'count': 5,
@@ -125,7 +126,7 @@ class ifports(BaseService):
               'critical': 8 * 1024 * 1024,
               'data_type': float
              },
-           'ifOut15': {
+           'ifOut::FastEthernet0_14': {
               'func': 'avg',
               'last': 5*60,
               'count': 5,
@@ -135,7 +136,7 @@ class ifports(BaseService):
               'data_type': float
              },
 
-           'ifIn16': {
+           'ifIn::FastEthernet0_15': {
               'func': 'avg',
               'last': 5*60,
               'count': 5,
@@ -144,7 +145,7 @@ class ifports(BaseService):
               'critical': 8 * 1024 * 1024,
               'data_type': float
              },
-           'ifOut16': {
+           'ifOut::FastEthernet0_15': {
               'func': 'avg',
               'last': 5*60,
               'count': 5,
@@ -154,3 +155,4 @@ class ifports(BaseService):
               'data_type': float
              }
         }
+
