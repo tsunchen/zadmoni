@@ -1,0 +1,20 @@
+#!/bin/bash
+cd  ~/zadmonid/zadmoni/config/client
+sh zadmoni_client_stop.sh
+echo "Restarting Zadmoni MoniClient..."
+sh zadmoni_client_start.sh
+
+
+#!/bin/bash
+cd  ~/zadmonic/211.152.50.254/client
+python  MoniClient_211.152.50.254.py  >  zadmoni_moniclient_211.152.50.254.log   2>&1 &
+echo "Zadmoni MoniClient_211.152.50.254 started."
+
+#!/bin/bash
+echo "Stopping Zadmoni MoniClient_211.152.50.254..."
+PID=`ps -ef | grep  MoniClient_211.152.50.254 | grep -v grep | awk '{print $2}'`
+if [[ "" !=  "$PID" ]]; then
+  echo "killing $PID"
+  kill -9 $PID
+fi
+echo "Zadmoni MoniClient_211.152.50.254 stopped."
