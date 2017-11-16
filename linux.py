@@ -122,7 +122,7 @@ class ifports(BaseService):
               'last': 5*60,
               'count': 5,
               'operator': 'gt',
-              'warning': 300000,
+              'warning': 8 * 1024,
               'critical': 8 * 1024 * 1024,
               'data_type': float
              },
@@ -131,7 +131,7 @@ class ifports(BaseService):
               'last': 5*60,
               'count': 5,
               'operator': 'gt',
-              'warning': 300000,
+              'warning': 8 * 1024,
               'critical': 8 * 1024 * 1024,
               'data_type': float
              },
@@ -141,7 +141,7 @@ class ifports(BaseService):
               'last': 5*60,
               'count': 5,
               'operator': 'gt',
-              'warning':  1 * 1024 * 1024,
+              'warning': 4 * 1024,
               'critical': 8 * 1024 * 1024,
               'data_type': float
              },
@@ -150,9 +150,8 @@ class ifports(BaseService):
               'last': 5*60,
               'count': 5,
               'operator': 'gt',
-              'warning':  1 * 1024 * 1024,
+              'warning': 4 * 1024,
               'critical': 8 * 1024 * 1024,
               'data_type': float
              }
         }
-
