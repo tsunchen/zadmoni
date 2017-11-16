@@ -1,5 +1,7 @@
 from conf import host
 
+from connector.sql import *
+
 import json,time,operator
 
 
@@ -91,6 +93,13 @@ def service_item_handler(main_instance, item_key, item_dic, client_s_data):
         if critical_res:
             print u"\033[41;1mCritical::\033[0mHost[%s] Service[%s] Threshold[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], critical_val, item_data, item_key)
         elif warning_res:
+            port_desc = item_key.index('FastEth')
+            port_desc2 = item_key[port_desc:]
+            query_port = port_desc2.replace("_","/")
+            query_scabip = client_s_data['hostname']
+            parameters_fone = (query_port, query_scabip)
+            print parameters_fone,
+            connmysql_fetchoneDictCursor('50.62.209.86','adminidc','idc_21viacloud','tsun_chen_idc', parameters_fone)
             print u"\033[43;1mWarning::\033[0mHost[%s] Service[%s] Threshold[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], warning_val, item_data, item_key)       
         else:
             print u"\033[42;1mNormal::\033[0mHost[%s] Service[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], item_data, item_key)
