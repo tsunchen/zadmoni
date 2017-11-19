@@ -55,10 +55,11 @@ def data_process(main_instance):
             s_data = main_instance.r.get(service_redis_key)
             if s_data:
                  s_data = json.loads(s_data)
-                 print '###>'  , s_data
+                 ##print '###>'  , s_data
                  time_stamp = s_data['time_stamp']
                  if time.time() - time_stamp < s_instance.interval:
                     if s_data['data']['status']==0: # data valid
+                      pass
                       print "\033[32;1m Host[%s] Service[%s] data valid\033[0m" % (ip, service_name)
                       #print service_name, s_data['data']
                       for item_key, item_dic in s_instance.triggers.items():
@@ -88,9 +89,15 @@ def service_item_handler(main_instance, item_key, item_dic, client_s_data):
         item_data = float(item_data)
         warning_res = oper_func(item_data, warning_val)
         critical_res = oper_func(item_data, critical_val)
-        print "warning: [%s] critical: [%s]" % (warning_val, critical_val)
-        print 'warning, critical ', warning_res, critical_res
+        ##print "warning: [%s] critical: [%s]" % (warning_val, critical_val)
+        ##print 'warning, critical ', warning_res, critical_res
         if critical_res:
+            ### automonus speed locker in the future
+            print "telnet %s " % client_s_data['hostname']
+            port_desc = item_key.index('FastEth')
+            port_desc2 = item_key[port_desc:]
+            query_port = port_desc2.replace("_","/")
+            print "conf interface %s " % query_port
             print u"\033[41;1mCritical::\033[0mHost[%s] Service[%s] Threshold[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], critical_val, item_data, item_key)
         elif warning_res:
             port_desc = item_key.index('FastEth')
@@ -98,8 +105,10 @@ def service_item_handler(main_instance, item_key, item_dic, client_s_data):
             query_port = port_desc2.replace("_","/")
             query_scabip = client_s_data['hostname']
             parameters_fone = (query_port, query_scabip)
+            print "`` warning ``>",
             print parameters_fone,
-            connmysql_fetchoneDictCursor('50.62.209.86','adminidc','idc_21viacloud','tsun_chen_idc', parameters_fone)
+            print connmysql_fetchoneDictCursor('50.62.209.86','adminidc','idc_21viacloud','tsun_chen_idc', parameters_fone)
             print u"\033[43;1mWarning::\033[0mHost[%s] Service[%s] Threshold[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], warning_val, item_data, item_key)       
         else:
+            #pass
             print u"\033[42;1mNormal::\033[0mHost[%s] Service[%s] Current[%s] of [%s]" % (client_s_data['hostname'], client_s_data['service_name'], item_data, item_key)
