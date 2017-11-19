@@ -1,0 +1,492 @@
+
+class ifports(BaseService):
+    def __init__(self):
+        super(ifports, self).__init__()
+        self.interval = 36
+        self.name = 'linux_ifportpeek'
+        self.plugin_name = 'get_ifport_s_info'
+        self.triggers = {
+
+
+           'ifIn::FastEthernet0_1': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_1': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+
+           'ifIn::FastEthernet0_2': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_2': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_3': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_3': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_4': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_4': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_5': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_5': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_6': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_6': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_7': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_7': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+           'ifIn::FastEthernet0_8': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_8': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_9': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_9': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_10': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_10': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+
+           'ifIn::FastEthernet0_11': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_11': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_12': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_12': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+           'ifIn::FastEthernet0_13': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_13': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_14': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 0.03 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_14': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 0.03 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+           'ifIn::FastEthernet0_15': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 0.03 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_15': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 0.03 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_16': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_16': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_17': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_17': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_18': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_18': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_19': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_19': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+
+           'ifIn::FastEthernet0_20': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_20': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_21': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_21': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+        
+
+           'ifIn::FastEthernet0_22': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_22': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+
+           'ifIn::FastEthernet0_23': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_23': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+
+        
+
+           'ifIn::FastEthernet0_24': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             },
+           'ifOut::FastEthernet0_24': {
+              'func': 'avg',
+              'last': 5*60,
+              'count': 5,
+              'operator': 'gt',
+              'warning': 1 * 1024 * 1024,
+              'critical': 8 * 1024 * 1024,
+              'data_type': float
+             }
+
+        }
