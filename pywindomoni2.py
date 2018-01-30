@@ -65,17 +65,17 @@ def monitor(first_invoke=1):
     value_dic = {}
     #user,nice,system,iowait,steal,idle = result.split()[2:]
 
-    v_disk_percent = []
+    v_df_percent = []
     for i in range(len(disk_id)):  
-        v_disk_percent.append(100 - disk_percent[i])  
+        v_df_percent.append(100 - disk_percent[i])  
 
-    disks = zip (disk_id, v_disk_percent)
-    #disks_dic = {}
+    disks = zip (disk_id, v_df_percent)
     disks_dic = dict(disks)
     value_dic = {
-        'cpu_prt': cpu['percent'],
-        'mem_prt': mem['percent'],
-        'disk_prt': disks_dic,
+        'status': 0,
+        'cpu_pct': cpu['percent'],
+        'mem_pct': mem['percent'],
+        'df_pct': disks_dic,
             #'iowait': iowait,
             #'steal': steal,
             #'idle':  idle,
@@ -96,18 +96,18 @@ if __name__ == '__main__':
     for i in range(len(disk_id)):  
         print u'%s盘空闲率: %s %%' % (disk_id[i],100 - disk_percent[i])  
     #raw_input("Enter enter key to exit...")    
-    #print monitor()
+
     data = monitor()
     print data
     jdata = json.dumps(data)
-
     print jdata
+
     ldata = json.loads(jdata)
-    
-    print ldata.keys()
-    print ldata["disk_prt"]["C"]
-    print ldata["disk_prt"]["D"]
-    print ldata["disk_prt"]["E"]
+    #print ldata.keys()
+    #print ldata['df_pct'].keys()
+    for id in ldata['df_pct'].keys():
+        print "disk_free_%s: %s %%" % (id, ldata["df_pct"][id])
+
 
 
 
