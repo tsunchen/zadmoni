@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding=utf8  
 import psutil  
 
@@ -72,9 +73,9 @@ def monitor(first_invoke=1):
     #disks_dic = {}
     disks_dic = dict(disks)
     value_dic = {
-        'cpu': cpu['percent'],
-        'mem': mem['percent'],
-        'disks': disks_dic,
+        'cpu_prt': cpu['percent'],
+        'mem_prt': mem['percent'],
+        'disk_prt': disks_dic,
             #'iowait': iowait,
             #'steal': steal,
             #'idle':  idle,
@@ -99,12 +100,14 @@ if __name__ == '__main__':
     data = monitor()
     print data
     jdata = json.dumps(data)
+
     print jdata
     ldata = json.loads(jdata)
+    
     print ldata.keys()
-    print ldata["disks"]["C"]
-    print ldata["disks"]["D"]
-    print ldata["disks"]["E"]
+    print ldata["disk_prt"]["C"]
+    print ldata["disk_prt"]["D"]
+    print ldata["disk_prt"]["E"]
 
 
 
