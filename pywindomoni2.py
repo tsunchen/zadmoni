@@ -19,7 +19,10 @@ disk_used = []
 disk_free = []  
 disk_percent = []  
 
-
+#进程
+process_pid = []
+process_name = []
+process_status = []
   
 #获取CPU信息  
 def get_cpu_info():  
@@ -54,6 +57,19 @@ def get_disk_info():
         disk_free.append(disk_info.free)  
         disk_percent.append(disk_info.percent)  
 
+#获取进程
+def get_process_info():
+    #https://pypi.python.org/pypi/psutil
+    for p in psutil.pids():
+        r = psutil.Process(p)
+        #r.username()
+        process_pid.append(r.pid)
+        process_name.append(r.name())
+        process_status.append(r.status())
+        #r.cmdline()
+        #r.create_time()
+
+
 
 def monitor(first_invoke=1):
     #shell_command = 'sar 1 3| grep "^Average:"'
@@ -71,6 +87,8 @@ def monitor(first_invoke=1):
 
     disks = zip (disk_id, v_df_percent)
     disks_dic = dict(disks)
+    #ret = disks_dic.update({None:None})
+    #print disks_dic
     value_dic = {
         'status': 0,
         'cpu_pct': cpu['percent'],
@@ -106,8 +124,10 @@ if __name__ == '__main__':
     #print ldata.keys()
     #print ldata['df_pct'].keys()
     for id in ldata['df_pct'].keys():
-        print "disk_free_%s: %s %%" % (id, ldata["df_pct"][id])
+        print "disk_free_%s: %s %%" % (id, ldata["df_pct"].get(id, 0))
+        #print "disk_free_%s: %s %%" % (id, ldata["df_pct"][id])
+        #print (ldata['df_pct'].get(id))
 
-
-
+    get_process_info()
+    print zip(process_pid, process_name, process_status)
 
